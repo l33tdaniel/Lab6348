@@ -9,8 +9,92 @@ using namespace std;
     The max size of the square matrices should be defined as a static constant 100 but the actual size of the square matrix will be the first line of data, 
     and it will less than or equal to 100. For this assignment, you will write the following functions:
 */
+void printAll(int userInputOne[][100], int userInputTwo[][100], int matrixLength){
+        // printing out the first matrix
+        cout << "Matrix One: " << endl;
+        for (int i = 0; i < matrixLength; i++){
+            for(int j = 0; j < matrixLength; j++){
+                if(j!=matrixLength-1){
+                    cout << userInputOne[i][j] << " ";
+                }
+                else{
+                    cout << userInputOne[i][j] << endl;
+                }
+            }
+        }
+        // printing out the second matrix
+        cout << "Matrix Two: " << endl;
+        for (int i = 0; i < matrixLength; i++){
+            for(int j = 0; j < matrixLength; j++){
+                if(j!=matrixLength-1){
+                    cout << userInputTwo[i][j] << " ";
+                }
+                else{
+                    cout << userInputTwo[i][j] << endl;
+                }
+            }
+        }
+}
+void substraction(int userInputOne[][100], int userInputTwo[][100], int matrixLength){
+    int substractionMatrix[100][100];
+    for(int i = 0; i < matrixLength; i++){
+        for(int j = 0; j < matrixLength; j++){
+            substractionMatrix[i][j] = (userInputOne[i][j] - userInputTwo[i][j]);
+        }
+    }
 
-
+    cout << "Resultant Matrix Product" << endl;
+    for (int i = 0; i < matrixLength; i++){
+        for(int j = 0; j < matrixLength; j++){
+            if(j!=matrixLength-1){
+                cout << substractionMatrix[i][j] << " ";
+            }
+            else{
+                cout << substractionMatrix[i][j] << endl;
+            }
+        }
+    }
+}
+void multiplication(int userInputOne[][100], int userInputTwo[][100], int matrixLength){
+    int multiplicativeMatrix[100][100];
+    for (int i =0; i < matrixLength; i++){
+        for (int j= 0; j < matrixLength; j++){
+            for (int k =0; k < matrixLength; k++){
+                multiplicativeMatrix[i][j] += userInputOne[i][k] * userInputTwo[k][j];
+            }
+        }
+    }
+    cout << "Resultant Matrix Product" << endl;
+    for (int i = 0; i < matrixLength; i++){
+        for(int j = 0; j < matrixLength; j++){
+            if(j!=matrixLength-1){
+                cout << multiplicativeMatrix[i][j] << " ";
+            }
+            else{
+                cout << multiplicativeMatrix[i][j] << endl;
+            }
+        }
+    }
+}
+void addition(int userInputOne[][100], int userInputTwo[][100], int matrixLength){
+        int additionMatrix[100][100];
+        for(int i = 0; i < matrixLength; i++){
+            for(int j = 0; j < matrixLength; j++){
+                additionMatrix[i][j] = (userInputOne[i][j] + userInputTwo[i][j]);
+            }
+        }
+        cout << "Resultant Matrix From Addition: " << endl;
+        for (int i = 0; i < matrixLength; i++){
+            for(int j = 0; j < matrixLength; j++){
+                if(j!=matrixLength-1){
+                    cout << additionMatrix[i][j] << " ";
+                }
+                else{
+                    cout << additionMatrix[i][j] << endl;
+                }
+            }
+        }
+}
 int main() {
     cout << "Daniel Neugent\nLab #6: Matrix manipulation\n";
     int userInputOne[100][100];
@@ -39,91 +123,11 @@ int main() {
             }
         }
         // printing out the first matrix
-        cout << "Matrix One: " << endl;
-        for (int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                if(j!=matrixLength-1){
-                    cout << userInputOne[i][j] << " ";
-                }
-                else{
-                    cout << userInputOne[i][j] << endl;
-                }
-            }
-        }
-        // printing out the second matrix
-        cout << "Matrix Two: " << endl;
-        for (int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                if(j!=matrixLength-1){
-                    cout << userInputTwo[i][j] << " ";
-                }
-                else{
-                    cout << userInputTwo[i][j] << endl;
-                }
-            }
-        }
+        printAll(userInputOne, userInputTwo, matrixLength);
+        addition(userInputOne, userInputTwo, matrixLength);
+        multiplication(userInputOne, userInputTwo, matrixLength);
+        substraction(userInputOne, userInputTwo, matrixLength);
         // building the tempMatrix for addition
-        int additionMatrix[100][100];
-        for(int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                additionMatrix[i][j] = (userInputOne[i][j] + userInputTwo[i][j]);
-            }
-        }
-        cout << "Resultant Matrix From Addition: " << endl;
-        for (int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                if(j!=matrixLength-1){
-                    cout << additionMatrix[i][j] << " ";
-                }
-                else{
-                    cout << additionMatrix[i][j] << endl;
-                }
-            }
-        }
-        
-        int multiplicativeMatrix[100][100];
-        for (int i =0; i < matrixLength; i++){
-            for (int j= 0; j < matrixLength; j++){
-                for (int k =0; k < matrixLength; k++){
-                    multiplicativeMatrix[i][j] += userInputOne[i][k] * userInputTwo[k][j];
-                }
-            }
-        }
-        cout << "Resultant Matrix Product" << endl;
-        for (int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                if(j!=matrixLength-1){
-                    cout << multiplicativeMatrix[i][j] << " ";
-                }
-                else{
-                    cout << multiplicativeMatrix[i][j] << endl;
-                }
-            }
-        }
-        int substractionMatrix[100][100];
-        for(int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                substractionMatrix[i][j] = (userInputOne[i][j] - userInputTwo[i][j]);
-            }
-        }
-
-        cout << "Resultant Matrix Product" << endl;
-        for (int i = 0; i < matrixLength; i++){
-            for(int j = 0; j < matrixLength; j++){
-                if(j!=matrixLength-1){
-                    cout << substractionMatrix[i][j] << " ";
-                }
-                else{
-                    cout << substractionMatrix[i][j] << endl;
-                }
-            }
-        }
-
-
-
-
-
     }
-
     return 0;
 }
